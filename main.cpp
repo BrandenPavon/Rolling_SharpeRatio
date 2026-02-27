@@ -1,11 +1,27 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include "datafeed.hpp"
 
-class Engine {
-  Engine() = default;
-  Engine(const Engine&) = default;
-  virtual ~Engine() = default;
+class ReturnCalculator {
 
 };
+class RollingSharpeEngine {
+  RollingSharpeEngine() = default;
+  RollingSharpeEngine(const RollingSharpeEngine&) = default;
+  virtual ~RollingSharpeEngine() = default;
+
+};
+
+class SharpePublisher {
+
+};
+
+class PerformanceMonitor {
+
+};
+
+double RiskFreeRateProvider();
 
 
 int main() {
