@@ -1,8 +1,10 @@
-#ifndef DATAFEED_HPP
-#define DATAFEED_HPP
+#include "datafeed.hpp"
 
-class DataFeed {
-  std::ifstream csv_to_parse;
+int DataFeed::PricesSize() {
+  return prices.size(); 
+}
+DataFeed::DataFeed(std::string& csv) {
+
 };
 
-#endif 
+
