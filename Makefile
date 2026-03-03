@@ -1,6 +1,6 @@
 include config.mk
 
-SRC = main.cpp src/datafeed.cpp
+SRC = main.cpp src/datafeed.cpp src/performancemonitor.cpp
 OBJ = ${SRC:.c=.o}
 
 

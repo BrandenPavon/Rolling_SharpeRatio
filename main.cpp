@@ -2,24 +2,18 @@
 #include <fstream>
 #include <string>
 #include "datafeed.hpp"
+#include "performancemonitor.hpp"
+#include "rollingsharpeengine.hpp"
 
 class ReturnCalculator {
 
 };
-class RollingSharpeEngine {
-  RollingSharpeEngine() = default;
-  RollingSharpeEngine(const RollingSharpeEngine&) = default;
-  virtual ~RollingSharpeEngine() = default;
 
-};
 
 class SharpePublisher {
 
 };
 
-class PerformanceMonitor {
-
-};
 
 double RiskFreeRateProvider();
 
