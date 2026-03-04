@@ -10,7 +10,8 @@ class DataFeed {
 private: 
   //PRIVATE DATA
   std::ifstream csv_to_parse;
-  std::deque<std::pair<double, double>> prices;
+  // timestamp, price
+  std::deque<std::pair<int, double>> data;
   double RunningPriceTotalSum{};
   int currentLine{};
 

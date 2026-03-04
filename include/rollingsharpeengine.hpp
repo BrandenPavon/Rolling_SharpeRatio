@@ -1,10 +1,21 @@
 #ifndef ROLLINGSHARPEENGINE_HPP
 #define ROLLINGSHARPEENGINE_HPP
+#include "datafeed.hpp"
+#include "performancemonitor.hpp"
+
 
 class RollingSharpeEngine {
-  RollingSharpeEngine() = default;
-  RollingSharpeEngine(const RollingSharpeEngine&) = default;
-  virtual ~RollingSharpeEngine() = default;
+private:
+  DataFeed dataF;
+  PerformanceMonitor perfMonitor;
+  
+
+public:
+  RollingSharpeEngine();
+  RollingSharpeEngine(const RollingSharpeEngine&);
+  virtual ~RollingSharpeEngine();
+
+
 
 };
 
