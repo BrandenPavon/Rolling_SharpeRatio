@@ -24,7 +24,7 @@ DataFeed::DataFeed(std::string& csv) {
     datapair.first = std::stoi(value);
 
     std::getline(iss, value, ',');
-    datapair.second = std::stoi(value);
+    datapair.second = std::stod(value);
 
     data.push_back(datapair);
   }
