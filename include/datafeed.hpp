@@ -18,6 +18,7 @@ private:
 public:
   // PUBLIC METHODS
   DataFeed(std::string& csv);
+  DataFeed(std::string& csv, int stopatLineK);
   int PricesSize();
   double CalculateRunningPriceTotalSum();
 
