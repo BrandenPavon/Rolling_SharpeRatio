@@ -21,4 +21,4 @@ options:
 main: ${OBJ}
 	${CC} -o $@ ${OBJ} ${CFLAGS} ${LDFLAGS}
 clean:
-	rm main *.o 
+	rm main *.o src/*.o
