@@ -4,7 +4,7 @@
 #include <utility>
 #include <cstdint>
 #include <cstddef>
-
+#include <stdexcept>
 #include <fstream>
 #include <sstream>
 
@@ -18,7 +18,7 @@ size_t DataFeed::PricesSize() {
 // stopatLineK defaults to 0
 DataFeed::DataFeed(std::string csv, uint64_t stopatLineK) {
   csv_to_parse.open(csv);
-  if (!csv_to_parse) throw "File does not exist";
+  if (!csv_to_parse) throw std::runtime_error("File does not exist");;
   std::string line{};
   uint64_t currentline{1};
   
