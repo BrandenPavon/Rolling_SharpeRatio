@@ -2,7 +2,7 @@ include config.mk
 
 SRC = main.cpp src/datafeed.cpp src/performancemonitor.cpp src/rollingsharpeengine.cpp
 
-OBJ = ${SRC:.c=.o}
+OBJ = ${SRC:.cpp=.o}
 
 
 all: options main 
@@ -15,7 +15,7 @@ options:
 	@echo "CC = ${CC}"
 	@echo "--------------------------"
 
-.c.o:
+.cpp.o:
 	${CC} -c -o $@ ${CFLAGS} $< 
 
 main: ${OBJ}
