@@ -5,4 +5,4 @@ Designed for quantitative trading systems, real-time analytics, and low-latency 
 
 Csv format
 
-symbol, epoch time, close
+epoch time, close

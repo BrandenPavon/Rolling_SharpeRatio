@@ -11,9 +11,9 @@ private:
   
 
 public:
-  RollingSharpeEngine();
-  RollingSharpeEngine(const RollingSharpeEngine&);
-  virtual ~RollingSharpeEngine();
+  RollingSharpeEngine(DataFeed df);
+  //RollingSharpeEngine(const RollingSharpeEngine&);
+  //virtual ~RollingSharpeEngine();
 
 
 
