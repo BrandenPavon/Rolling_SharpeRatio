@@ -19,7 +19,7 @@ double RiskFreeRateProvider();
 
 
 int main() {
-  DataFeed df("tuff.csv", 5);
+  DataFeed df("test.csv", 5);
   //RollingSharpeEngine rse(df);
   return 0;
 }
