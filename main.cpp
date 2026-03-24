@@ -1,8 +1,5 @@
 #include <iostream>
-#include <fstream>
-#include <string>
 #include <exception>
-#include <stdexcept>
 
 #include "datafeed.hpp"
 #include "performancemonitor.hpp"
@@ -23,7 +20,7 @@ double RiskFreeRateProvider();
 
 int main() {
   try {
-    DataFeed df("test.csv", 5);
+    DataFeed df("testdata/test.csv", 5);
   } catch (const std::exception& e) {
     std::cerr << "Error: " << e.what() << '\n';
   }
