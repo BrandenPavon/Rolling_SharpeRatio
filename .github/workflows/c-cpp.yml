@@ -19,3 +19,5 @@ jobs:
 
     - name: Build project
       run: make -j$(nproc)
+    - name: Make sure it runs
+      run: make test
