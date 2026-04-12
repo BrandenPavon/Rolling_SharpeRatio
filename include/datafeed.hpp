@@ -14,7 +14,17 @@ private:
   std::ifstream csv_to_parse;
   // Use a deque for data because it allows push pop operations and faster grow time than vector, tradeoff: memory is in chunks
   std::deque<std::pair<uint64_t, double>> data;
+  
+  uint8_t windowSize{};
+
   double RunningPriceTotalSum{};
+  double RunningPriceTotalSumSquared{};
+  // double r = log(price_t / price_{t-1}) simple return
+  // add r_new to running sum both, subtract r_old
+  // mean = RunningPriceTotalSum / windowSize;
+  // variance  = (RunningPriceTotalSumSquared / windowSize) - mean * mean;
+  
+
   uint64_t currentLine{};
 
 public:
