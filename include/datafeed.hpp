@@ -12,7 +12,7 @@ class DataFeed {
 private: 
   //PRIVATE DATA
   std::ifstream csv_to_parse;
-  // timestamp, price
+  // Use a deque for data because it allows push pop operations and faster grow time than vector, tradeoff: memory is in chunks
   std::deque<std::pair<uint64_t, double>> data;
   double RunningPriceTotalSum{};
   uint64_t currentLine{};
