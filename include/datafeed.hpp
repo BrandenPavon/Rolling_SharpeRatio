@@ -23,7 +23,7 @@ private:
   // add r_new to running sum both, subtract r_old
   // mean = RunningPriceTotalSum / windowSize;
   // variance  = (RunningPriceTotalSumSquared / windowSize) - mean * mean;
-  
+  // double sharpe = (mean - rf) / std; std = sqrt(variance)
 
   uint64_t currentLine{};
 
