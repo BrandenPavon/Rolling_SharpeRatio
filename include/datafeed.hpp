@@ -17,12 +17,12 @@ private:
   
   uint8_t windowSize{};
 
-  double RunningPriceTotalSum{};
-  double RunningPriceTotalSumSquared{};
+  double RunningPriceReturnSum{};
+  double RunningPriceReturnSumSquared{};
   // double r = log(price_t / price_{t-1}) simple return
   // add r_new to running sum both, subtract r_old
-  // mean = RunningPriceTotalSum / windowSize;
-  // variance  = (RunningPriceTotalSumSquared / windowSize) - mean * mean;
+  // mean = RunningPriceReturnSum / windowSize;
+  // variance  = (RunningPriceReturnSumSquared / windowSize) - mean * mean;
   // double sharpe = (mean - rf) / std; std = sqrt(variance)
 
   uint64_t currentLine{};
@@ -47,6 +47,8 @@ public:
   void changeCurrentLine(uint64_t k);
   void readNextPrice();
   void populateData();
+
+  void addNewPrice(double price);
 };
 
 #endif 
