@@ -1,5 +1,6 @@
 #include "datafeed.hpp"
 #include <string>
+#include <cmath>
 #include <iostream>
 #include <utility>
 #include <cstdint>
@@ -10,11 +11,7 @@
 
 // delete copy constructor and copy operator
 
-
-size_t DataFeed::PricesSize() {
-  return data.size(); 
-}
-
+size_t DataFeed::PricesSize() { return data.size(); }
 // stopatLineK defaults to 0
 DataFeed::DataFeed(std::string csv, uint64_t stopatLineK) {
   csv_to_parse.open(csv);
@@ -45,5 +42,11 @@ void DataFeed::changeCSV(std::string csv) {
   csv_to_parse.open(csv);
 
 };
+
 void DataFeed::changeCurrentLine(uint64_t k) {};
 
+void DataFeed::addNewPrice(double price) {
+  double SimpleReturn = std::log(price / data.back().second);
+  RunningPriceReturnSum += SimpleReturn;
+  RunningPriceReturnSumSquared += SimpleReturn*SimpleReturn;
+};
