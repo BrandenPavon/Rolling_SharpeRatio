@@ -8,13 +8,28 @@
 #include <cstddef>
 #include <utility> 
 
+#include "ringbuffer.hpp"
+
 class DataFeed {
 private: 
-  //PRIVATE DATA
+  // csv to parse
   std::ifstream csv_to_parse;
-  // timestamp, price
-  std::deque<std::pair<uint64_t, double>> data;
-  double RunningPriceTotalSum{};
+
+  // Use a ring buffer for rolling window
+  RingBuffer<uint64_t> TimestampRingBuffer;
+  RingBuffer<double> PriceRingBuffer;
+  RingBuffer<double> PriceReturnsRingBuffer;
+  
+  uint8_t windowSize{};
+
+  double RunningPriceReturnSum{};
+  double RunningPriceReturnSumSquared{};
+  // double r = log(price_t / price_{t-1}) simple return
+  // add r_new to running sum both, subtract r_old
+  // mean = RunningPriceReturnSum / windowSize;
+  // variance  = (RunningPriceReturnSumSquared / windowSize) - mean * mean;
+  // double sharpe = (mean - rf) / std; std = sqrt(variance)
+
   uint64_t currentLine{};
 
 public:
@@ -37,6 +52,8 @@ public:
   void changeCurrentLine(uint64_t k);
   void readNextPrice();
   void populateData();
+
+  void addNewPrice(double price);
 };
 
 #endif 

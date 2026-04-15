@@ -1,6 +1,6 @@
 include config.mk
 
-SRC = main.cpp src/datafeed.cpp src/performancemonitor.cpp src/rollingsharpeengine.cpp
+SRC = main.cpp src/datafeed.cpp src/performancemonitor.cpp src/rollingsharpeengine.cpp include/ringbuffer.hpp
 
 OBJ = ${SRC:.cpp=.o}
 
