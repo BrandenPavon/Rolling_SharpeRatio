@@ -10,32 +10,18 @@
 #include <sstream>
 
 // delete copy constructor and copy operator
-
-size_t DataFeed::PricesSize() { return data.size(); }
+#define DEFAULT_WINDOW 1000
+#define DEFAULT_VALUE 0
+size_t DataFeed::PricesSize() { return TimestampRingBuffer.size(); }
 // stopatLineK defaults to 0
-DataFeed::DataFeed(std::string csv, uint64_t stopatLineK) {
-  csv_to_parse.open(csv);
-  if (!csv_to_parse) throw std::runtime_error("File does not exist");;
-  std::string line{};
-  uint64_t currentline{1};
+
+
+
+DataFeed::DataFeed(std::string csv, uint64_t stopatLineK)
+  : TimestampRingBuffer(DEFAULT_WINDOW, DEFAULT_VALUE),
+    PriceRingBuffer(DEFAULT_WINDOW, DEFAULT_VALUE),
+    PriceReturnsRingBuffer(DEFAULT_WINDOW, DEFAULT_VALUE) {
   
-
-  // condition statement ends at EOF or line K if arguement given
-  while (std::getline(csv_to_parse, line) && (currentline <= stopatLineK || stopatLineK == 0) ) {
-    std::istringstream iss(line);
-    std::string value{};
-    //
-    std::pair<int, double> datapair;
-
-    std::getline(iss, value, ',');
-    datapair.first = static_cast<uint64_t>(std::stoull(value));
-
-    std::getline(iss, value, ',');
-    datapair.second = std::stod(value);
-
-    data.push_back(datapair);
-    currentline++;
-  }
 }
 
 void DataFeed::changeCSV(std::string csv) {
@@ -46,7 +32,7 @@ void DataFeed::changeCSV(std::string csv) {
 void DataFeed::changeCurrentLine(uint64_t k) {};
 
 void DataFeed::addNewPrice(double price) {
-  double SimpleReturn = std::log(price / data.back().second);
-  RunningPriceReturnSum += SimpleReturn;
-  RunningPriceReturnSumSquared += SimpleReturn*SimpleReturn;
+  //double SimpleReturn = std::log(price / data.back().second);
+  //RunningPriceReturnSum += SimpleReturn;
+  //RunningPriceReturnSumSquared += SimpleReturn*SimpleReturn;
 };

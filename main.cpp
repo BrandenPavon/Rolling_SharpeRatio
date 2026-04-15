@@ -21,9 +21,12 @@ double RiskFreeRateProvider();
 int main() {
   RingBuffer<double> testbuffer(99, -0.1);
   testbuffer.push_back(0.1);
+  testbuffer.push_back(0.2);
+  testbuffer.push_back(0.3);
   std::cout << testbuffer.front() << '\n';
   testbuffer.pop_front();
   std::cout << testbuffer.front() << '\n';
+  std::cout << testbuffer[0] << '\n';
 
 
   return 0;

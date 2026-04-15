@@ -8,12 +8,17 @@
 #include <cstddef>
 #include <utility> 
 
+#include "ringbuffer.hpp"
+
 class DataFeed {
 private: 
-  //PRIVATE DATA
+  // csv to parse
   std::ifstream csv_to_parse;
-  // Use a deque for data because it allows push pop operations and faster grow time than vector, tradeoff: memory is in chunks
-  std::deque<std::pair<uint64_t, double>> data;
+
+  // Use a ring buffer for rolling window
+  RingBuffer<uint64_t> TimestampRingBuffer;
+  RingBuffer<double> PriceRingBuffer;
+  RingBuffer<double> PriceReturnsRingBuffer;
   
   uint8_t windowSize{};
 
